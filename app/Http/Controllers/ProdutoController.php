@@ -36,8 +36,8 @@ class ProdutoController extends Controller
             return "Esse produto não existe";
         }else
         {
-           return ("chegou aqui");
-         //  return view( 'produtos.detalhes', [ 'p' => $produtos ] );
+           //return ("chegou aqui");
+           return view( 'produtos.detalhes', [ 'p' => $produto ] );
         }  
     }
 
@@ -79,10 +79,11 @@ class ProdutoController extends Controller
     public function destroy($id)
     {
         
-        $produto = Produto::find( $id );
+        $produto = Produto::find($id);
+        
         $produto->delete();
 
-       return redirect()
+        return redirect()
         ->action( 'ProdutoController@listProducts' );
     }
 
